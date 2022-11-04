@@ -1,0 +1,16 @@
+---
+
+version: '2'
+
+services:
+  redis:
+    image: "redis:3.2.3"
+    hostname: redis
+
+  redis-commander:
+    build: https://github.com/theycallmejag/springboot-project.git
+    command: --redis-host redis
+    links:
+      - "redis:redis"
+    ports:
+      - 8080:8080
